@@ -7,10 +7,12 @@ import { getProfile } from 'src/actions/home/homeAction'
 import { editProfle, editImage } from 'src/actions/account/accountAction'
 import CIcon from '@coreui/icons-react'
 import { cilPencil } from '@coreui/icons'
+import { useNavigate } from 'react-router-dom'
 import ModalError from 'src/components/Modal/ModalError'
 
 const Index = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { getProfileResult } = useSelector((state) => state.HomeRecuder)
 
   const [dataProfile, setDataProfile] = useState([])
@@ -69,6 +71,13 @@ const Index = () => {
     }
 
     dispatch(editProfle(dataEdit))
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('jwtTokenExpiration')
+    localStorage.removeItem('Bearer')
+    localStorage.removeItem('jwtToken')
+    navigate('/login')
   }
 
   return (
@@ -169,7 +178,7 @@ const Index = () => {
             </Col>
             <Col lg={24}>
               <div className="d-grid mb-2">
-                <CButton color="danger" className="text-white">
+                <CButton color="danger" className="text-white" onClick={handleLogout}>
                   Logout
                 </CButton>
               </div>
