@@ -24,7 +24,7 @@ const Login = () => {
   const addLoginToken = useSelector((state) => state.LoginReducer.addLoginToken)
   const addLoginResult = useSelector((state) => state.LoginReducer.addLoginResult)
 
-  console.log('log', addLoginResult)
+  console.log('addLoginResult', addLoginStatus)
 
   const [dataInput, setDataInput] = useState(initData)
   const [onSuccess, setOnSuccess] = useState(false)
@@ -52,7 +52,7 @@ const Login = () => {
   }
 
   useEffect(() => {
-    if (addLoginResult !== false) {
+    if (addLoginResult !== false && dataInput.email !== '' && dataInput.password !== '') {
       setButtonloading(false)
       setOnSuccess(true)
     } else if (addloginError !== false) {
@@ -62,7 +62,7 @@ const Login = () => {
         message: addloginError ?? 'Mohon Maaf Ada yang Salah',
       })
     }
-  }, [addLoginStatus, addloginError])
+  }, [addLoginResult, addloginError])
 
   return (
     <>
