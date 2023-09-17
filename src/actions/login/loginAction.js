@@ -37,7 +37,7 @@ export const addLogin = (data) => {
           type: CHECK_LOGIN,
           payload: {
             loading: false,
-            data: jwtToken,
+            data: res.data,
             errorMessage: false,
             status: res.status,
             token: jwtToken,

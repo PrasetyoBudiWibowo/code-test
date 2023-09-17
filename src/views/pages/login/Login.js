@@ -22,6 +22,9 @@ const Login = () => {
   const addloginError = useSelector((state) => state.LoginReducer.addLoginError)
   const addLoginStatus = useSelector((state) => state.LoginReducer.addLoginStatus)
   const addLoginToken = useSelector((state) => state.LoginReducer.addLoginToken)
+  const addLoginResult = useSelector((state) => state.LoginReducer.addLoginResult)
+
+  console.log('log', addLoginResult)
 
   const [dataInput, setDataInput] = useState(initData)
   const [onSuccess, setOnSuccess] = useState(false)
@@ -49,10 +52,10 @@ const Login = () => {
   }
 
   useEffect(() => {
-    if (addLoginStatus === 200 && addLoginStatus !== false) {
+    if (addLoginResult !== false) {
       setButtonloading(false)
       setOnSuccess(true)
-    } else if (addLoginStatus !== 200 && addLoginStatus !== false) {
+    } else if (addloginError !== false) {
       setButtonloading(false)
       setOnError({
         open: true,
