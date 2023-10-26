@@ -5,12 +5,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
-// import store from './store'
-import { createStore, compose, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import reducers from './reduces'
-
-const store = createStore(reducers, compose(applyMiddleware(thunk)))
+import store from './store'
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>

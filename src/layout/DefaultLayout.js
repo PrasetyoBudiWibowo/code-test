@@ -5,7 +5,7 @@ const DefaultLayout = () => {
   return (
     <div>
       <div className="wrapper d-flex flex-column min-vh-100 bg-light">
-        <AppHeader />
+        {/* <AppHeader /> */}
         <div className="body flex-grow-1 px-3" style={{ backgroundColor: 'white' }}>
           <AppContent />
         </div>
